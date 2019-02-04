@@ -3,6 +3,7 @@
  */
 package net.reghours.datamodel;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -21,7 +22,7 @@ public class HibernateUtil {
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();
         try {
             sessionFactory = conf.buildSessionFactory(serviceRegistry);
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             System.err.println("Error a la creacio del SessionFactory." + e);
             throw new ExceptionInInitializerError(e);
         }       

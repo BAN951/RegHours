@@ -30,12 +30,12 @@ public class Logout extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, IllegalStateException {
-        
+ 
         request.getSession().invalidate();
         
         request.setAttribute("action", "home");
         request.getRequestDispatcher("index.jsp").forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

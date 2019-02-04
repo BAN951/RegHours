@@ -11,6 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.reghours.datamodel.actions.RecordsManager;
+import net.reghours.datamodel.entities.User;
+import static net.reghours.types.TimerecordType.ENTRY;
+import static net.reghours.types.TimerecordType.EXIT;
 
 /**
  *
@@ -19,28 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "UserPage", urlPatterns = {"/UserPage"})
 public class UserPage extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        if("GET".equals(request.getMethod())) {
-            request.setAttribute("action", "userpage");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
-        
-        
-        
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -52,12 +34,14 @@ public class UserPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        request.setAttribute("action", "userpage");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     * 
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -66,9 +50,61 @@ public class UserPage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        
 
+        User user = (User) request.getSession().getAttribute("User");
+        RecordsManager recordsManager = new RecordsManager();
+        String action = request.getParameter("btnRecord");
+        request.setAttribute("Username", user.getUsername());
+        
+        if(recordsManager.emptyRecordList(user.getUsername())) {
+            if("ENTRY".equals(action)) {
+                
+                recordsManager.addTimerecord(ENTRY, user);
+                
+                request.setAttribute("action", "userpage");
+                request.getRequestDispatcher("index.jsp").include(request, response);
+            }
+            else {
+                request.setAttribute("wrongAction", "You don't have any records yet."
+                                                  + "<br/>You can only click 'Entry' button.");
+                request.setAttribute("action", "userpage");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }
+        else {
+            if("ENTRY".equals(action)) {
+                if(recordsManager.getLastRecordType(user.getUsername()) != ENTRY) {
+
+                    recordsManager.addTimerecord(ENTRY, user);
+
+                    request.setAttribute("action", "userpage");
+                    request.getRequestDispatcher("index.jsp").include(request, response);
+                } else {
+                    request.setAttribute("wrongAction", "You can not enter if you didn't exit. "
+                            + "<br/>You must exit first.");
+                    request.setAttribute("action", "userpage");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+            }
+
+            if("EXIT".equals(action)) {
+                if(recordsManager.getLastRecordType(user.getUsername()) != EXIT) {
+
+                    recordsManager.addTimerecord(EXIT, user);
+
+                    request.setAttribute("action", "userpage");
+                    request.getRequestDispatcher("index.jsp").include(request, response);
+                } else {
+                    request.setAttribute("wrongAction", "You can not exit if you didn't enter. "
+                            + "<br/>You must enter first.");
+                    request.setAttribute("action", "userpage");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+            }
+        }
+    }
+        
     /**
      * Returns a short description of the servlet.
      *

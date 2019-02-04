@@ -6,9 +6,8 @@
 package net.reghours.validation;
 
 import java.util.List;
-import net.reghours.datamodel.actions.UserList;
+import net.reghours.datamodel.actions.UserManager;
 import net.reghours.datamodel.entities.User;
-import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -20,46 +19,39 @@ public class UserValidator {
     
     public boolean userExists(String username, String email) {
         
-        UserList userList = new UserList();
-        List<User> users = userList.getAllUsers();
-        boolean exists = false;
+        UserManager userManager = new UserManager();
+        List<User> users = userManager.getAllUsers();
         
         for (User u : users) {
             if (u.getUsername().equals(username) || u.getEmail().equals(email)) {
-                exists = true;
+                return true;
             }
         }
         
-        return exists;
+        return false;
     }
     
     public boolean userExists(String username) {
         
-        UserList userList = new UserList();
-        List<User> users = userList.getAllUsers();
-        boolean exists = false;
+        UserManager userManager = new UserManager();
+        List<User> users = userManager.getAllUsers();
         
         for (User u : users) {
             if (u.getUsername().equals(username)) {
-                exists = true;
+                return true;
             }
         }
         
-        return exists;
+        return false;
     }
     
     public boolean loginPasswordCorrect(String username, String passwd) {
         
-        UserList userList = new UserList();
-        User user = userList.getUserByUsername(username);
+        UserManager userManager = new UserManager();
+        User user = userManager.getUserByUsername(username);
         
-        if(user != null) {
-            String passwdHash = DigestUtils.sha256Hex(passwd);
-            return user.getPasswd().equals(passwdHash);
-        } 
-        else {
-            return false;
-        }
+        return user.comparePasswords(passwd);
+
     }
     
 }

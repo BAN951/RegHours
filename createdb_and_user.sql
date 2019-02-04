@@ -18,7 +18,7 @@ create table if not exists `TIMERECORD` (
 	`idRecord` int not null primary key auto_increment,
     `record` datetime not null,
     `type` ENUM('ENTRY','EXIT') not null, 
-    # Only possible value  is Entry (E) or Exit (X)
+    # Only possible value  is ENTRY or EXIT 
     `user` int not null,
     foreign key(`user`) references `USER`(`userId`)
 );

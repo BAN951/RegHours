@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import net.reghours.datamodel.actions.UserList;
+import net.reghours.datamodel.actions.UserManager;
 import net.reghours.datamodel.entities.User;
 import net.reghours.validation.UserValidator;
 import net.reghours.validation.ejbs.SignupBeanLocal;
@@ -95,8 +95,8 @@ public class Signup extends HttpServlet {
                         String passwd = DigestUtils.sha256Hex((String) request.getParameter("passwd"));
                         user.setPasswd(passwd);
 
-                        UserList userList = new UserList();
-                        userList.addNewUser(user);
+                        UserManager userManager = new UserManager();
+                        userManager.addNewUser(user);
 
                         request.setAttribute("action", "login");
                         request.getRequestDispatcher("index.jsp").forward(request, response);

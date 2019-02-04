@@ -22,13 +22,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
- * @author admin
+ * @author Benjamin Adam Nagy
  */
 @Entity
-@Table(name = "USER", catalog = "REGHOURS", schema = "")
+@Table(name = "User", catalog = "reghours", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
@@ -77,6 +78,7 @@ public class User implements Serializable {
     @Size(min = 1, max = 64)
     @Column(name = "passwd")
     private String passwd;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Timerecord> timerecordCollection;
 
@@ -176,6 +178,10 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "net.reghours.datamodel.entities.User[ userId=" + userId + " ]";
+    }
+    
+    public boolean comparePasswords(String passwdToCheck) {
+        return this.passwd.equals(DigestUtils.sha256Hex(passwdToCheck));
     }
     
 }

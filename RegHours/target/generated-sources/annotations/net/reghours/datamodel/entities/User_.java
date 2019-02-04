@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import net.reghours.datamodel.entities.Timerecord;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-02-01T18:44:53")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-02-04T03:10:13")
 @StaticMetamodel(User.class)
 public class User_ { 
 

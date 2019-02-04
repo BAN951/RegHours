@@ -10,8 +10,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,10 +26,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author admin
+ * @author Benjamin Adam Nagy
  */
 @Entity
-@Table(name = "TIMERECORD", catalog = "REGHOURS", schema = "")
+@Table(name = "TIMERECORD", catalog = "reghours", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Timerecord.findAll", query = "SELECT t FROM Timerecord t")
@@ -53,7 +51,6 @@ public class Timerecord implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date record;
     
-    @Enumerated(EnumType.STRING)
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 6)
@@ -63,7 +60,6 @@ public class Timerecord implements Serializable {
     @JoinColumn(name = "user", referencedColumnName = "userId")
     @ManyToOne(optional = false)
     private User user;
-    
 
     public Timerecord() {
     }
@@ -76,6 +72,37 @@ public class Timerecord implements Serializable {
         this.idRecord = idRecord;
         this.record = record;
         this.type = type;
+    }
+    
+    /**
+     * 
+     * @param recordType 
+     */
+    public void setType(Enum recordType) {
+        this.type = recordType.toString();
+    }
+    
+    /**
+     * Takes the datetime from the database, splits it in two parts 
+     * and returns the first part. The date part as a String.
+     * Format: yy-mm-dd
+     * 
+     * @return 
+     */
+    public String getFormattedDate() {
+        return this.record.toString().split(" ")[0];
+    }
+    
+    /**
+     * Takes the datetime from the database, splits it in two parts 
+     * and returns the second part. The time part as a String.
+     * Format: hh:mm:ss
+     * 
+     * 
+     * @return 
+     */
+    public String getFormattedTime() {
+        return this.record.toString().split(" ")[1];
     }
 
     public Integer getIdRecord() {
@@ -132,7 +159,10 @@ public class Timerecord implements Serializable {
 
     @Override
     public String toString() {
-        return "net.reghours.datamodel.entities.Timerecord[ idRecord=" + idRecord + " ]";
+        return "net.reghours.datamodel.entities.Timerecord[ idRecord=" + idRecord + " ]" 
+                + ", Record: " + record + ", Type: " + type + ", User: " + user;
     }
+
+    
     
 }

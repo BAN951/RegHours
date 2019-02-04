@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import net.reghours.datamodel.actions.UserList;
+import net.reghours.datamodel.actions.UserManager;
 import net.reghours.datamodel.entities.User;
 import net.reghours.validation.ejbs.LoginBeanLocal;
 import org.apache.commons.beanutils.BeanUtils;
@@ -83,11 +83,12 @@ public class Login extends HttpServlet {
                     if(userValidator.loginPasswordCorrect(request.getParameter("username"),
                             request.getParameter("passwd"))) {
 
-                        UserList userList = new UserList();
-                        User user = userList.getUserByUsername(request.getParameter("username"));
+                        UserManager userManager = new UserManager();
+                        User user = userManager.getUserByUsername(request.getParameter("username"));
 
                         request.getSession().setAttribute("User", user);
 
+                        request.setAttribute("Username", user.getUsername());
                         request.setAttribute("action", "userpage");
                         request.getRequestDispatcher("index.jsp").forward(request, response);
 
