@@ -7,7 +7,7 @@ package net.reghours.webservice;
 
 import java.util.List;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -30,7 +30,8 @@ public class TimerecordsService {
     private final UserValidator userValidator = new UserValidator();
     private final RecordsManager recordsManager = new RecordsManager();
     
-    @GET
+    @POST
+    @Path("/getRecords")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public GetRecordsResponse getRecords(GetRecordsRequest request) {
@@ -49,4 +50,8 @@ public class TimerecordsService {
             return new GetRecordsResponse("Forbidden", 403, null);
         }
     }
+    
+   
+    
+    
 }

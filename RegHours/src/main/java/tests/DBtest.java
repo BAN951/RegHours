@@ -40,7 +40,7 @@ public class DBtest {
                 System.out.println("Email: " + u.getEmail());
                 System.out.println("ID: " + u.getUserId());
                 i++;
-            }   
+            }
 
             session.getTransaction().commit();
             session.close();
