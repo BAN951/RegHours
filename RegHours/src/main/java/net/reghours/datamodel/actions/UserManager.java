@@ -8,6 +8,7 @@ package net.reghours.datamodel.actions;
 import java.util.List;
 import net.reghours.datamodel.HibernateUtil;
 import net.reghours.datamodel.entities.User;
+import net.reghours.validation.UserValidator;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,7 +31,6 @@ public class UserManager {
         session.close();
 
         return users;
-     
     }
     
     public void addNewUser(User newUser) throws HibernateException {
@@ -44,7 +44,6 @@ public class UserManager {
         
         session.getTransaction().commit();
         session.close();
-        
     }
     
     public User getUserByUsername(String username) throws HibernateException {
@@ -52,14 +51,21 @@ public class UserManager {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         
-        User user = (User) session.getNamedQuery("User.findByUsername")
+        UserValidator userValidator = new UserValidator();
+        
+        if(userValidator.userExists(username)) {
+            
+            User user = (User) session.getNamedQuery("User.findByUsername")
                 .setParameter("username", username)
                 .list()
                 .get(0);
-        
-        session.close();
-        
-        return user;
+            
+            session.close();
+            return user;
+        }
+        else {
+            session.close();
+            return null;
+        }
     }
-    
 }

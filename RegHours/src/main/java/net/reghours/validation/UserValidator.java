@@ -45,13 +45,12 @@ public class UserValidator {
         return false;
     }
     
-    public boolean loginPasswordCorrect(String username, String passwd) {
+    public boolean passwordCorrect(String username, String passwd) {
         
         UserManager userManager = new UserManager();
         User user = userManager.getUserByUsername(username);
         
         return user.comparePasswords(passwd);
-
     }
     
 }

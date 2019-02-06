@@ -80,7 +80,7 @@ public class Login extends HttpServlet {
 
                 if(userValidator.userExists(request.getParameter("username"))) {
 
-                    if(userValidator.loginPasswordCorrect(request.getParameter("username"),
+                    if(userValidator.passwordCorrect(request.getParameter("username"),
                             request.getParameter("passwd"))) {
 
                         UserManager userManager = new UserManager();

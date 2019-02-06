@@ -29,7 +29,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  * @author Benjamin Adam Nagy
  */
 @Entity
-@Table(name = "User", catalog = "reghours", schema = "")
+@Table(name = "USER", catalog = "REGHOURS", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")

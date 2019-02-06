@@ -11,7 +11,6 @@ import net.reghours.datamodel.entities.Timerecord;
 import net.reghours.datamodel.entities.User;
 import static net.reghours.types.TimerecordType.*;
 import net.reghours.datamodel.HibernateUtil;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
