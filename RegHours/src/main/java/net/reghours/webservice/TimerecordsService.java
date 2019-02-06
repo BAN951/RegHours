@@ -16,6 +16,8 @@ import net.reghours.datamodel.actions.UserManager;
 import net.reghours.datamodel.entities.Timerecord;
 import net.reghours.datamodel.entities.User;
 import net.reghours.validation.UserValidator;
+import net.reghours.webservice.records.AddRecordRequest;
+import net.reghours.webservice.records.AddRecordResponse;
 import net.reghours.webservice.records.GetRecordsRequest;
 import net.reghours.webservice.records.GetRecordsResponse;
 
@@ -51,7 +53,27 @@ public class TimerecordsService {
         }
     }
     
-   
+    @POST
+    @Path("/addRecord")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public AddRecordResponse addRecord(AddRecordRequest request) {
+        
+        if(request == null)
+            return new AddRecordResponse("Bad request", 400, null);
+        
+        User user = userManager.getUserByUsername(request.getUsername());
+        
+        if(user != null && userValidator.passwordCorrect(request.getUsername(), request.getPasswd())) {
+            if(request.checkTypeCorrect(request.getType())) {
+                
+                Timerecord record = recordsManager.insertTimerecord(request.getType(), user);
+                return new AddRecordResponse("OK", 200, record);
+            }
+        }
+
+        return new AddRecordResponse("Forbidden", 403, null);
+    }
     
     
 }

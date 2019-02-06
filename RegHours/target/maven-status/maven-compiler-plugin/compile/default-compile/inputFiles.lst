@@ -13,6 +13,7 @@
 /home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/webservice/ApplicationConfig.java
 /home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/datamodel/actions/UserManager.java
 /home/admin/NetBeansProjects/RegHours/src/main/java/tests/TimerecordsByUsername.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/webservice/records/AddRecordRequest.java
 /home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/types/TimerecordType.java
 /home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/controllers/Logout.java
 /home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/validators/Username.java
@@ -30,3 +31,4 @@
 /home/admin/NetBeansProjects/RegHours/src/main/java/tests/GetAllTimerecordsByUsernameOrUSer.java
 /home/admin/NetBeansProjects/RegHours/src/main/java/tests/DBtest.java
 /home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/validators/Password.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/webservice/records/AddRecordResponse.java

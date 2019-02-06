@@ -41,6 +41,24 @@ public class RecordsManager {
         session.close();
     }
     
+    public Timerecord insertTimerecord(String recordType, User user) {
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        
+        Timerecord tr = new Timerecord();
+        tr.setRecord(new Date());
+        tr.setType(recordType);
+        tr.setUser(user);
+        
+        session.beginTransaction();
+        session.save(tr);
+        session.getTransaction().commit();
+        session.close();
+        
+        return tr;
+    }
+    
     public List<Timerecord> getTimerecords(String username) {
         
         SessionFactory sf = HibernateUtil.getSessionFactory();
