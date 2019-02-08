@@ -24,8 +24,7 @@ public class SessionFilter implements Filter {
 
     private FilterConfig filterConfig = null;
     
-    public SessionFilter() {
-    }    
+    public SessionFilter() {}    
     
     /**
      *
