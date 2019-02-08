@@ -10,15 +10,15 @@ package net.reghours.webservice.records;
  * @author Benjamin Adam Nagy
  */
 public class GetRecordsRequest {
-    
+
     private String username;
     private String passwd;
-    
+
     public GetRecordsRequest() {}
-    
+
     public GetRecordsRequest(String username, String passwd) {
-        this.username = username; 
-        this.passwd = passwd; 
+        this.username = username;
+        this.passwd = passwd;
     }
 
     public String getUsername() {

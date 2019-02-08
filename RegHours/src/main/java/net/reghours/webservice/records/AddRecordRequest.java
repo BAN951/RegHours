@@ -7,7 +7,7 @@ package net.reghours.webservice.records;
 
 /**
  *
- * @author admin
+ * @author Benjamin Adam Nagy
  */
 public class AddRecordRequest {
     
@@ -25,7 +25,7 @@ public class AddRecordRequest {
     
     public boolean checkTypeCorrect(String type) {
         String t = type.toLowerCase();
-        return ("entrada".equals(t) || "salida".equals(t));
+        return ("entry".equals(t) || "exit".equals(t));
     }
 
     public String getUsername() {

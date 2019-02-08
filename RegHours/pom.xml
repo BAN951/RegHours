@@ -97,6 +97,13 @@
             <version>2.27</version>
         </dependency>
         
+        <!-- Compression filter -->
+        <dependency>
+            <groupId>com.googlecode.htmlcompressor</groupId>
+            <artifactId>htmlcompressor</artifactId>
+            <version>1.5.2</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

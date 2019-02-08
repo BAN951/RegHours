@@ -61,8 +61,7 @@ public class Timerecord implements Serializable {
     @ManyToOne(optional = false)
     private User user;
 
-    public Timerecord() {
-    }
+    public Timerecord() {}
 
     public Timerecord(Integer idRecord) {
         this.idRecord = idRecord;
@@ -72,6 +71,12 @@ public class Timerecord implements Serializable {
         this.idRecord = idRecord;
         this.record = record;
         this.type = type;
+    }
+    
+    public Timerecord(Date record, String type, User user) {
+        this.record = record;
+        this.type = type;
+        this.user = user; 
     }
     
     /**

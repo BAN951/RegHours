@@ -17,7 +17,7 @@ import org.hibernate.SessionFactory;
 /**
  * Manages a users timerecords. 
  * Works with the basic operations of a CRUD. It creates, reads, updates and deletes
- * records of a user which is got by username or by the user object itself in some cases.
+ * records of a user which is selected by username or by the user object itself in some cases.
  * 
  * @author Benjamin Adam Nagy
  */
@@ -41,22 +41,15 @@ public class RecordsManager {
         session.close();
     }
     
-    public Timerecord insertTimerecord(String recordType, User user) {
+    public void addTimerecord(Timerecord record) {
         
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         
-        Timerecord tr = new Timerecord();
-        tr.setRecord(new Date());
-        tr.setType(recordType);
-        tr.setUser(user);
-        
         session.beginTransaction();
-        session.save(tr);
+        session.save(record);
         session.getTransaction().commit();
         session.close();
-        
-        return tr;
     }
     
     public List<Timerecord> getTimerecords(String username) {

@@ -9,13 +9,14 @@ import net.reghours.datamodel.entities.Timerecord;
 
 /**
  *
- * @author admin
+ * @author Benjamin Adam Nagy
  */
 public class AddRecordResponse {
     
-    private String message; 
+    private String message;
     private int status;
     private Timerecord record;
+    private String additionalMessage = "No additional message"; 
     
     public AddRecordResponse() {}
 
@@ -23,6 +24,13 @@ public class AddRecordResponse {
         this.message = message;
         this.status = status;
         this.record = record;
+    }
+    
+    public AddRecordResponse(String message, int status, Timerecord record, String additionalMessage) {
+        this.message = message;
+        this.status = status;
+        this.record = record;
+        this.additionalMessage = additionalMessage;
     }
     
     public String getMessage() {
@@ -47,5 +55,13 @@ public class AddRecordResponse {
 
     public void setRecord(Timerecord record) {
         this.record = record;
+    }
+
+    public String getAdditionalMessage() {
+        return additionalMessage;
+    }
+
+    public void setAdditionalMessage(String additionalMessage) {
+        this.additionalMessage = additionalMessage;
     }
 }

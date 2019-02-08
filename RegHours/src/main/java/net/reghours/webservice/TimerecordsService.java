@@ -5,6 +5,7 @@
  */
 package net.reghours.webservice;
 
+import java.util.Date;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -15,6 +16,8 @@ import net.reghours.datamodel.actions.RecordsManager;
 import net.reghours.datamodel.actions.UserManager;
 import net.reghours.datamodel.entities.Timerecord;
 import net.reghours.datamodel.entities.User;
+import static net.reghours.types.TimerecordType.ENTRY;
+import static net.reghours.types.TimerecordType.EXIT;
 import net.reghours.validation.UserValidator;
 import net.reghours.webservice.records.AddRecordRequest;
 import net.reghours.webservice.records.AddRecordResponse;
@@ -59,21 +62,56 @@ public class TimerecordsService {
     @Produces(MediaType.APPLICATION_JSON)
     public AddRecordResponse addRecord(AddRecordRequest request) {
         
-        if(request == null)
-            return new AddRecordResponse("Bad request", 400, null);
+        if(request == null || !(request.checkTypeCorrect(request.getType())))
+            return new AddRecordResponse("Bad request", 400, null, 
+                    "You must send the correct data in the correct structure.");
         
         User user = userManager.getUserByUsername(request.getUsername());
         
         if(user != null && userValidator.passwordCorrect(request.getUsername(), request.getPasswd())) {
-            if(request.checkTypeCorrect(request.getType())) {
-                
-                Timerecord record = recordsManager.insertTimerecord(request.getType(), user);
-                return new AddRecordResponse("OK", 200, record);
-            }
-        }
 
+                Timerecord record;
+                
+                if(recordsManager.emptyRecordList(user.getUsername())) {
+                    if("ENTRY".equals(request.getType().toUpperCase())) {
+                        
+                        record = new Timerecord(new Date(), request.getType().toUpperCase(), user);
+                        recordsManager.addTimerecord(record);
+                        return new AddRecordResponse("OK", 200, record);
+                    }
+                    else {
+                        return new AddRecordResponse("Method not allowed", 405, null, 
+                                                     "No records yet, only entry available.");
+                    }
+                }
+                else {
+                    if("ENTRY".equals(request.getType().toUpperCase())) {
+                        if (recordsManager.getLastRecordType(user.getUsername()) != ENTRY) {
+                        
+                            record = new Timerecord(new Date(), request.getType().toUpperCase(), user);
+                            recordsManager.addTimerecord(record);
+                            return new AddRecordResponse("OK", 200, record);
+                        }
+                        else {
+                            return new AddRecordResponse("Method not allowed", 405, null, 
+                                                     "Last record is an entry. Must exit first.");
+                        }
+                    } else if("EXIT".equals(request.getType().toUpperCase())) {
+                        if(recordsManager.getLastRecordType(user.getUsername()) != EXIT) {
+                        
+                            record = new Timerecord(new Date(), request.getType().toUpperCase(), user);
+                            recordsManager.addTimerecord(record);
+                            return new AddRecordResponse("OK", 200, record);
+                        }
+                        else {
+                            return new AddRecordResponse("Method not allowed", 405, null, 
+                                                         "Last record is an exit. Must enter first.");
+                        }
+                    }
+                }
+            }
+        
         return new AddRecordResponse("Forbidden", 403, null);
     }
-    
-    
 }
+
