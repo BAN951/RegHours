@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-import net.reghours.webservice.records.GetRecordsRequest;
+import net.reghours.rs.webservice.records.GetRecordsRequest;
 
 /**
  *

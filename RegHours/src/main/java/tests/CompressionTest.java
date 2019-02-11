@@ -35,17 +35,24 @@ public class CompressionTest extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        PrintWriter writer = null;
         String requestEncodings = request.getHeader("Accept-Encoding");
-        PrintWriter writer = null; 
         
         if(requestEncodings != null 
                 && requestEncodings.indexOf("gzip") != -1) {
             OutputStream outStream = response.getOutputStream();
             writer = new PrintWriter(new GZIPOutputStream(outStream), false);
             response.setHeader("Content-Encoding", "gzip");
-            
+            System.out.println("Zipped-version sent");
+        }
+        else {
+            writer = new PrintWriter(response.getOutputStream(), false);
+            System.out.println("Unzipped-version sent");
         }
         
+        writer.write("<html></body>");
+        writer.write("<div><p>This is texto</p></div>");
+        writer.write("</body></html>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -6,7 +6,7 @@
 package net.reghours.datamodel.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -79,8 +79,8 @@ public class User implements Serializable {
     @Column(name = "passwd")
     private String passwd;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Collection<Timerecord> timerecordCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", targetEntity = Timerecord.class)
+    private List<Timerecord> timerecordCollection;
 
     public User() {
     }
@@ -147,11 +147,11 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Timerecord> getTimerecordCollection() {
+    public List<Timerecord> getTimerecordCollection() {
         return timerecordCollection;
     }
 
-    public void setTimerecordCollection(Collection<Timerecord> timerecordCollection) {
+    public void setTimerecordCollection(List<Timerecord> timerecordCollection) {
         this.timerecordCollection = timerecordCollection;
     }
 
