@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -79,7 +80,8 @@ public class User implements Serializable {
     @Column(name = "passwd")
     private String passwd;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", targetEntity = Timerecord.class)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", targetEntity = Timerecord.class,
+               fetch = FetchType.EAGER)
     private List<Timerecord> timerecordCollection;
 
     public User() {

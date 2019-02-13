@@ -1,38 +1,28 @@
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\TimerecordTest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\rs\webservice\records\GetRecordsRequest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\TimerecordsByUsername.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\rs\webservice\records\AddRecordRequest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\filters\SessionFilter.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\datamodel\actions\UserManager.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\rs\webservice\records\GetRecordsResponse.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\validators\Password.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\controllers\Logout.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\DBtest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\datamodel\entities\Timerecord.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\HibernateSessionSaveTest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\Sha256TEST.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\WebServiceTests.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\ejbs\SignupBean.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\validators\Email.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\filters\filter_beans\GZipServletOutputStream.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\GetAllTimerecordsByUsernameOrUSer.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\rs\webservice\records\AddRecordResponse.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\datamodel\HibernateUtil.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\ejbs\SignupBeanLocal.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\controllers\Signup.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\controllers\UserPage.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\ejbs\LoginBean.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\controllers\Login.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\QueryUnexistingUserTest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\filters\filter_beans\GZipServletResponseWrapper.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\UserValidator.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\validators\Username.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\validation\ejbs\LoginBeanLocal.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\DateTest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\datamodel\actions\RecordsManager.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\types\TimerecordType.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\SelectUserByUsername.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\tests\CompressionTest.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\rs\webservice\TimerecordsService.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\rs\webservice\ApplicationConfig.java
-C:\Users\Benjamin Adam Nagy\Documents\NetBeansProjects\RegHours\src\main\java\net\reghours\datamodel\entities\User.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/filters/CompressResponseFilter.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/ejbs/LoginBean.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/controllers/Login.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/datamodel/actions/RecordsManager.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/ejbs/SignupBean.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/datamodel/HibernateUtil.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/filters/SessionFilter.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/controllers/UserPage.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/rs/webservice/records/AddRecordResponse.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/datamodel/actions/UserManager.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/types/TimerecordType.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/controllers/Logout.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/validators/Username.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/ejbs/SignupBeanLocal.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/filters/wrappers/GZipServletOutputStream.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/datamodel/entities/Timerecord.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/rs/webservice/records/GetRecordsRequest.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/controllers/Signup.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/ejbs/LoginBeanLocal.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/validators/Email.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/filters/wrappers/GZipServletResponseWrapper.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/rs/webservice/records/AddRecordRequest.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/datamodel/entities/User.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/rs/webservice/ApplicationConfig.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/UserValidator.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/validation/validators/Password.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/rs/webservice/records/GetRecordsResponse.java
+/home/admin/NetBeansProjects/RegHours/src/main/java/net/reghours/rs/webservice/TimerecordsService.java

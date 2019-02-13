@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div>
-    <hr/>
-    <p>This is the footer</p>
+    <div class="d-flex justify-content-center pt-3">
+        <p>Copyright&copy; <b>| Benjamin Adam Nagy |</b></p>
+        <p>2ºDAW - Web Desing Interfaces</p>
+    </div>
 </div>
