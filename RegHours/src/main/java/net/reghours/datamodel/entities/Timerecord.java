@@ -6,6 +6,9 @@
 package net.reghours.datamodel.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
+import java.text.ParseException;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -77,6 +80,98 @@ public class Timerecord implements Serializable {
         this.record = record;
         this.type = type;
         this.user = user; 
+    }
+    
+    public String getDateTimeDifference(Date dateTime1, Date dateTime2) throws ParseException {
+        
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+       
+        long diff = dateTime1.getTime() - dateTime2.getTime();
+        Date result = new Date(); 
+        result.setTime(diff);
+        
+        String format = df.format(result);
+        return format;
+    }
+    
+    /**
+     * Returns the difference between two dates in a string format. 
+     * Depending on the diference it will return only hours and minutes, 
+     * or days, hours and minutes.
+     * 
+     * @param firstDate
+     * @param secondDate
+     * @return formatted string describing the difference in date and time
+     */
+    public String getDifference(Date firstDate, Date secondDate) {
+        
+        String result = "";
+        if(firstDate != null && secondDate != null) {
+            try {
+                String[] first = firstDate.toString().split(" ");
+                String[] second = secondDate.toString().split(" ");
+
+                long days = getDifferenceBetweenDatesInDays(first[0], second[0]);
+                long minutes = getDifferenceInTime(first[1], second[1]);
+
+                if(days != 0) result = days + " days ";
+
+                if (minutes == 60) {
+                    result = result = "1 hour";
+                } else {
+                    if (minutes > 60) {
+                        result = result + (minutes / 60) + " hours " + (minutes % 60) + " minutes";
+                    } else {
+                        if(minutes < 1 || minutes == 0) 
+                        result = "less then 1 minute";
+                        else
+                        result = result + minutes + " minutes";
+                    }
+                }
+            } 
+            catch (ParseException pe) {
+                pe.getMessage(); 
+            }
+            }
+        return result;
+    }
+    
+    /**
+     * Take two times in string format: HH:mm:ss; and calculates the diferrence 
+     * between them, returns a long representing the minutes passed between the two
+     * times.
+     * 
+     * @return diference in minutes
+     */
+    private long getDifferenceInTime(String time1, String time2) throws ParseException {
+        
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm:ss");
+        Date firstTime = timeFormatter.parse(time1);
+        Date secondTime = timeFormatter.parse(time2);
+        
+        long diffMs = Math.abs(secondTime.getTime() - firstTime.getTime());
+        return (TimeUnit.MINUTES.convert(diffMs, TimeUnit.MILLISECONDS));
+    }
+    
+    /**
+     * 
+     * Calculates the difference between two dates in days. Format yyyy-MM-dd.
+     * The dates are passed as strings. Returns a long representing the differnce
+     * in days between the two dates. Return 0 if it is the same day.
+     * 
+     * @param date1
+     * @param date2
+     * @return diference in days
+     * @throws ParseException 
+     */
+    private long getDifferenceBetweenDatesInDays(String date1, String date2) throws ParseException {
+        
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date firstDate = dateFormatter.parse(date1);
+        Date secondDate = dateFormatter.parse(date2);
+        
+        long diffMs = Math.abs(secondDate.getTime() - firstDate.getTime());
+        return (TimeUnit.DAYS.convert(diffMs, TimeUnit.MILLISECONDS));
     }
     
     /**

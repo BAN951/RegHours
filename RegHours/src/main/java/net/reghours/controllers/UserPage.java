@@ -35,6 +35,8 @@ public class UserPage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        User user = (User) request.getSession().getAttribute("User");
+        request.setAttribute("Username", user.getUsername());
         request.setAttribute("action", "userpage");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

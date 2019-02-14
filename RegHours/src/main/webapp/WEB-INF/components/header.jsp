@@ -22,10 +22,12 @@
         </li>
         <% } else { %>
         <li class="nav-item">
-            <span>Welcome,<strong><%= ((User) session.getAttribute("User")).getUsername() %></strong></span>
-            <form method="POST" action="Logout">
+            <div class="clearfix">
+            <span class="text-white float-left mt-2 mr-3">Welcome, <strong><%= ((User) session.getAttribute("User")).getUsername() %></strong></span>
+            <form method="POST" action="Logout" class="float-right">
                 <button class="btn btn-secondary" type="submit">Logout</button>
             </form>
+            </div>
         </li>
         <% } %>       
         </ul>
