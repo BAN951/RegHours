@@ -15,11 +15,24 @@ and open the template in the editor.
     height: 15vw;
 }
 
-#login_page_form {
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 50vh;
+    max-width: 70vw;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+td {
+    font-size: 1.3em; 
+    font-weight: bold;
+}
+
+#login_page_form, #signup_page_form {
     width: 50vw;
 }
 
-#login_button {
+#login_button, #signup_button {
     font-size: 1.5em;
 }
 
@@ -32,10 +45,6 @@ and open the template in the editor.
 #img1 {
     width: 50vw;
     height: 30vw;
-}
-
-.bottom-card {
-    height: 15vh;
 }
 
 footer {

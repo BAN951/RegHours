@@ -9,7 +9,7 @@
 <div id="login-page">
     <div class="row"><div class="col mr-5 ml-5">
     <h1 class="mt-4 mb-2 text-center">Login</h1>
-    <form id="login_page_form" name="login-form" method="POST" action="Login" class="border p-5 mx-auto">
+    <form id="login_page_form" name="login-form" method="POST" action="Login" class="bg-white border p-5 mx-auto">
         <div class="form-group mt-2">
             <label for="username" class="lead">Username</label>
             <input type="text" name="username" class="form-control" required autocomplete="on"/>

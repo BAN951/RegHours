@@ -56,27 +56,5 @@
                 </b></p>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="card bottom-card">
-                    <div class="card-body">
-                        <p><strong>Sign up to our page to make a better use of your time!</strong></p>
-                         <form id="home_section_signup" method="GET" action="Signup" class="mt-3">
-                            <button class="btn btn-primary btn-block" type="submit"><b>Signup</b></button>
-                         </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card bottom-card">
-                    <div class="card-body">
-                        <p class="float-left"><strong>Already have an account? Log in!</strong></p>
-                         <form id="home_section_login" method="GET" action="Login" class="mt-3">
-                            <button class="btn btn-primary btn-block" type="submit"><b>Login</b></button>
-                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
