@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package net.reghours.datamodel.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 import java.text.ParseException;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -61,7 +60,8 @@ public class Timerecord implements Serializable {
     private String type;
     
     @JoinColumn(name = "user", referencedColumnName = "userId")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonBackReference
     private User user;
 
     public Timerecord() {}
@@ -81,19 +81,7 @@ public class Timerecord implements Serializable {
         this.type = type;
         this.user = user; 
     }
-    
-    public String getDateTimeDifference(Date dateTime1, Date dateTime2) throws ParseException {
-        
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-       
-        long diff = dateTime1.getTime() - dateTime2.getTime();
-        Date result = new Date(); 
-        result.setTime(diff);
-        
-        String format = df.format(result);
-        return format;
-    }
-    
+
     /**
      * Returns the difference between two dates in a string format. 
      * Depending on the diference it will return only hours and minutes, 
@@ -122,8 +110,8 @@ public class Timerecord implements Serializable {
                     if (minutes > 60) {
                         result = result + (minutes / 60) + " hours " + (minutes % 60) + " minutes";
                     } else {
-                        if(minutes < 1 || minutes == 0) 
-                        result = "less then 1 minute";
+                        if(minutes < 1 || minutes == 0)
+                        result = "less than 1 minute";
                         else
                         result = result + minutes + " minutes";
                     }
@@ -198,7 +186,6 @@ public class Timerecord implements Serializable {
      * and returns the second part. The time part as a String.
      * Format: hh:mm:ss
      * 
-     * 
      * @return 
      */
     public String getFormattedTime() {
@@ -262,7 +249,4 @@ public class Timerecord implements Serializable {
         return "net.reghours.datamodel.entities.Timerecord[ idRecord=" + idRecord + " ]" 
                 + ", Record: " + record + ", Type: " + type + ", User: " + user;
     }
-
-    
-    
 }

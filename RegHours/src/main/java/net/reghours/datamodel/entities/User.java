@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package net.reghours.datamodel.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -82,6 +79,7 @@ public class User implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", targetEntity = Timerecord.class,
                fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Timerecord> timerecordCollection;
 
     public User() {

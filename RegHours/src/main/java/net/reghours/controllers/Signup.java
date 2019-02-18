@@ -56,7 +56,6 @@ public class Signup extends HttpServlet {
             
             request.setAttribute("action", "signup"); 
             request.getRequestDispatcher("index.jsp").forward(request, response);
-   
     }
 
     /**

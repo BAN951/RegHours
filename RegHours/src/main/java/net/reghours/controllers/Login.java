@@ -53,7 +53,6 @@ public class Login extends HttpServlet {
             
             request.setAttribute("action", "login");
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            
     }
 
     /**
@@ -120,7 +119,7 @@ public class Login extends HttpServlet {
             
             // TO-DO:
             
-                // redirect a una página de error. 
+                // redirect a una página de error.
             
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }

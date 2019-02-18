@@ -15,7 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 /**
- * Manages a users timerecords. 
+ * Manages a users timerecords.
  * Works with the basic operations of a CRUD. It creates, reads, updates and deletes
  * records of a user which is selected by username or by the user object itself in some cases.
  * 
@@ -80,7 +80,5 @@ public class RecordsManager {
         
         List<Timerecord> records = getTimerecords(username);
         return records.size() < 1;
-        
     }
-    
 }

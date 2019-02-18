@@ -34,6 +34,13 @@
             <label for="confirmPasswd" class="lead">Confirm password:</label>
             <input type="password" name="confirmPasswd" class="form-control"/>
         </div>
+        <% if(request.getAttribute("errorSignup") != null) { %>
+        <div class="errorContainer">
+            <% for(String error : (ArrayList<String>) request.getAttribute("errorSignup")) { %>
+                <p style="color: red"><%= error %></p>
+            <% } %>
+        </div>
+        <% } %>
         <button id="signup_button" class="btn btn-primary btn-lg pl-4 pr-4 mt-2 btn-block" type="submit">Signup</button>
         <div class="clearfix text-center m-3">
             <a href="/RegHours/Login" class="text-warning"><b>Already got an account? Log in!</b></a>
@@ -44,10 +51,3 @@
     </div>
     </div></div>
 </div>
-<% if(request.getAttribute("errorSignup") != null) { %>
-    <div class="errorContainer">
-        <% for(String error : (ArrayList<String>) request.getAttribute("errorSignup")) { %>
-            <p style="color: red"><%= error %></p>
-        <% } %>
-    </div>
-<% } %>
